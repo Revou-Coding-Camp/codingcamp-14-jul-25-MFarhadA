@@ -4,14 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <title>GEVUXX</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+    
+    <link rel="stylesheet" href="cs/style.css">
     <script src="js/script.js"></script>
 </head>
 <body>
+
+    <!-- Header Section -->
     <Header>
         <nav>
-            <div class="flex items-center justify-between p-4 bg-gray-100">
-                <h1 class="text-xl font-bold">GEVUXX</h1>
+            <div class="flex items-center justify-between py-4 px-10">
+                <h1 class="text-2xl font-bold">AJILLA</h1>
                 <ul class="flex space-x-4">
                     <li><a href="#home" class="hover:text-xl">Home</a></li>
                     <li><a href="#about" class="hover:text-xl">About</a></li>
@@ -19,18 +30,56 @@
                     <li><a href="#contact" class="hover:text-xl">Contact</a></li>
                 </ul>
             </div>
-            
         </nav>
     </Header>
+
+    <!-- Main Content Section -->
     <Main>
-        <section id="home" class="p-8 bg-white">
-            <h2 class="text-2xl font-bold">Selamat datang, teman-teman!</h2>
-            <p class="mt-4">Ini test aja sih...</p>
+        <section id="home" class="flex flex-col items-center justify-center py-4 px-10 h-screen bg-white">
+            <h2 class="font-medium">Welcome, </h2>
+            <p class="text-2xl font-bold">To AJILLA's</p>
+            <p class="text-5xl font-black">WEBSITE</p>
+        </section>
+        <section id="about" class="py-4 px-10 bg-gray-100">
+            <h2 class="text-xl font-semibold">Tentang Saya</h2>
+            <p>Saya adalah seorang pengembang web yang berfokus pada pembuatan aplikasi web yang responsif dan interaktif.</p>
+            <div class="flex gap-3 items-center justify-center mt-4">
+                <!-- Kotlin -->
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg" alt="Kotlin" class="w-10 h-10">
+
+                <!-- React -->
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" class="w-10 h-10">
+
+                <!-- Figma -->
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma" class="w-10 h-10">
+
+                <!-- Godot -->
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Godot_icon.svg" alt="Godot" class="w-10 h-10">
+            </div>
+        </section>
+        <section id="services" class="py-4 px-10  bg-white">
+            <h2 class="text-xl font-semibold">Layanan Saya</h2>
+            <ul class="list-disc pl-5">
+                <li>Pengembangan Web</li>
+                <li>Desain UI/UX</li>
+                <li>Optimasi SEO</li>
+            </ul>
+        </section>
+        <section id="contact" class="py-4 px-10 bg-gray-100">
+            <p class="text-xl font-semibold mb-4">Contact me</p>
+            <div class="flex flex-col space-y-4">
+                <input class ="bg-gray-200 p-2 rounded-md" type="email" placeholder="E-mail">
+                <input class="bg-gray-200 p-2 rounded-md" type="text" placeholder="Full Name">
+                <textarea class="bg-gray-200 p-2 rounded-md" placeholder="Message" rows="4"></textarea>
+            </div>
+            <button type="submit" class="bg-blue-500 font-semibold text-white px-4 py-2 rounded-md hover:bg-blue-600 mt-4">Send</button>
         </section>
     </Main>
+
+    <!-- Footer Section -->
     <Footer>
         <div class="p-4 bg-gray-200 text-center">
-            <p>&copy; 2023 GEVUXX. All rights reserved.</p>
+            <p>&copy; 2025 AJILLA. All rights reserved.</p>
         </div>
     </Footer>
 </body>
