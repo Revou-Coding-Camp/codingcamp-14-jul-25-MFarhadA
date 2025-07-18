@@ -13,7 +13,7 @@ function submitName() {
         document.getElementById("userName").textContent = name;
         document.getElementById("popup").style.display = "none";
     } else {
-        alert("Nama tidak boleh kosong!");
+        alert("Please enter your name.");
     }
 }
 
