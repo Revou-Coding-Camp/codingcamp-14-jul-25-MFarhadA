@@ -7,26 +7,80 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />      
     <style>
         body {
             font-family: 'Poppins', sans-serif;
         }
+        .button-primary {
+            transition: background-color 0.3s ease, color 0.3s ease;
+            background-color: black;
+            color: white;
+            border: 2px solid transparent;
+        }
+        .button-primary:hover {
+            background-color: white;
+            color: black;
+            border: 2px solid black;
+        }
         .grayscale-img {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             filter: grayscale(100%);
         }
-        .grayscale-img-hover:hover {
+        .grayscale-img:hover {
             filter: grayscale(0%);
+            transform: translateY(-5px);
+        }
+        @keyframes spinSlow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .rotate-img {
+            animation: spinSlow 5s linear infinite;
+        }
+        .copy-feedback {
+            transition: all 0.3s ease;
+        }
+        .portfolio-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .portfolio-card:hover {
+            transform: translateY(-5px);
+        }
+        .message-card {
+            transition: all 0.3s ease;
         }
     </style>
     <script src="js/script.js"></script>
 </head>
 <body>
 
+    <!-- Popup for User Name Input -->
+    <div id="popup" class="fixed inset-0 bg-white border-md border-gray-200 flex items-center justify-center z-50">
+        <div class="bg-white rounded-xl shadow-lg p-8 text-center w-96">
+            <h2 class="text-xl font-semibold mb-4">Masukkan Nama Anda</h2>
+            <input type="text" id="userNameInput" class="w-full px-4 py-3 bg-gray-100 p-2 rounded-md mb-4" placeholder="Nama Lengkap">
+            <button onclick="submitName()" class="bg-black text-white px-6 py-2 rounded-full button-primary">Masuk</button>
+        </div>
+    </div>
+
     <!-- Header Section -->
     <Header>
         <nav>
             <div class="flex items-center justify-between py-4 px-10">
-                <h1 class="font-semibold">mfarhadainc@gmail.com</h1>
+                <div class="flex items-center space-x-3">
+                    <h1 class="font-semibold">mfarhadainc@gmail.com</h1>
+                    <button 
+                        id="copyButton"
+                        onclick="copyEmail()" 
+                        class="bg-black text-white px-3 py-2 rounded-full flex items-center justify-center"
+                        title="Copy email address"
+                    >
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                        </svg>
+                    </button>
+                </div>
                 <ul class="flex space-x-4">
                     <li><a href="#home" class="hover:underline">Home</a></li>
                     <li><a href="#about" class="hover:underline">About</a></li>
@@ -42,72 +96,129 @@
     
         <!-- Home Section -->
         <section id="home" class="flex flex-col items-center justify-center py-4 px-10 h-screen bg-white">
-            <h2 class="font-medium mb-4">Welcome, </h2>
+            <h2 class="font-medium mb-4">Welcome, <span id="userName"></span></h2>
             <p class="text-2xl font-semibold">I'm Muhammad Farhad</p>
             <p class="text-8xl font-black">AJILLA</p>
-            <a href="#portfolio" class="bg-black font-semibold text-white px-6 py-4 rounded-full hover:bg-white hover:border hover:border-black hover:border-2 hover:text-black mt-8">
-                See Portfolio
+            <a href="#portfolio" class="font-semibold px-6 py-3 rounded-full mt-4 button-primary">
+                See Portfolio ⤵
             </a>
         </section>
 
         <!-- Skill Section -->
-        <section id="skill" class="rounded-md py-10 px-20 bg-gray-100">
-            <div class="px-50 flex items-center justify-between">
-                <!-- Kotlin -->
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg" alt="Kotlin" class="grayscale-img grayscale-img-hover w-10 h-10">
-
+        <section id="skill" class="rounded-3xl mx-10 py-10 px-15 bg-gray-200">
+            <div class="flex flex-wrap px-10 gap-4 items-center justify-between">
                 <!-- React -->
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" class="grayscale-img grayscale-img-hover w-10 h-10">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" alt="React" class="grayscale-img w-15 h-15">
 
-                <!-- Figma -->
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma" class="grayscale-img grayscale-img-hover w-10 h-10">
+                <!-- JavaScript -->
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="JavaScript" class="grayscale-img w-15 h-15">
+
+                <!-- Tailwind -->
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind CSS" class="grayscale-img w-15 h-15">
+                
+                <!-- Kotlin -->
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kotlin/kotlin-original.svg" alt="Kotlin" class="grayscale-img w-15 h-15">
 
                 <!-- Godot -->
-                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Godot_icon.svg" alt="Godot" class="grayscale-img grayscale-img-hover w-10 h-10">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/godot/godot-original.svg" alt="Godot" class="grayscale-img w-15 h-15">
+                
+                <!-- Figma -->
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg" alt="Figma" class="grayscale-img w-15 h-15">
             </div>
         </section>
 
         <!-- About Section -->
-        <section id="about" class="py-4 px-10 bg-white">
+        <section id="about" class="py-10 px-20 bg-white">
+            <h2 class="text-3xl font-bold text-center mb-10">About Me</h2>
+            <div class="flex flex-row">
+                <img src="https://pbs.twimg.com/profile_images/1931727083639873537/jZiL_JZc_400x400.jpg" alt="Kotlin" class="grayscale-img rotate-img w-30 h-30 mx-auto rounded-full mb-4">
+                <div class="flex flex-col ml-5">
+                    <div class="flex items-center mb-3">
+                        <h3 class="text-xl font-semibold">Muhammad Farhad</h3>
+                        <span class="text-gray-500 ml-2">|</span>
+                        <p class="text-gray-500 ml-2">Web & Game Developer</p>
+                    </div>
+                    <p>
+                        I'm a passionate developer with a strong focus on Developing Web and Games. I'm currently working on various projects, including a web application and a game.
+                    </p>
+                </div>
+            </div>
+
+
         </section>
 
-        <!-- Services Section -->
-        <section id="portfolio" class="py-4 px-10  bg-white">
-            <h2 class="text-xl font-semibold">Layanan Saya</h2>
-            <ul class="list-disc pl-5">
-                <li>Pengembangan Web</li>
-                <li>Desain UI/UX</li>
-                <li>Optimasi SEO</li>
-            </ul>
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="rounded-3xl mx-10 py-10 px-15 bg-gray-200">
+            <h2 class="text-3xl font-bold text-center mb-10">Portfolio</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                
+                <!-- GitHub Card -->
+                <div class="portfolio-card bg-white rounded-xl border border-gray-200 p-6">
+                    <div class="flex items-center mb-4">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg " class="w-8 h-8 mr-3" />
+                        <h3 class="text-xl font-semibold">GitHub</h3>
+                    </div>
+                    <p class="text-gray-600 mb-6">
+                        Explore my code repositories, open source contributions, and development projects. See how I solve problems and build applications.
+                    </p>
+                    <a 
+                        href="https://github.com/MFarhadA/" 
+                        target="_blank"
+                        class="inline-block bg-black text-white px-6 py-3 rounded-full font-semibold hover:bg-purple-800 transition-colors duration-200"
+                    >
+                        Visit GitHub →
+                    </a>
+                </div>
+
+                <!-- Itch.io Card -->
+                <div class="portfolio-card bg-white rounded-xl border border-gray-200 p-6">
+                    <div class="flex w-8 h-8 items-center mb-4">
+                        <img src="https://static.itch.io/images/itchio-textless-black.svg" class="minimal_logo mr-3" alt="itch.io logo" width="262" height="235">
+                        <h3 class="text-xl font-semibold">Itch.io</h3>
+                    </div>
+                    <p class="text-gray-600 mb-6">
+                        Play and download my indie games and interactive projects. Discover creative experiences built with passion and innovation.
+                    </p>
+                    <a 
+                        href="https://mfarhada.itch.io/" 
+                        target="_blank" 
+                        class="inline-block bg-black text-white px-6 py-3 rounded-full font-semibold hover:bg-red-600 transition-colors duration-200"
+                    >
+                        Visit Itch.io →
+                    </a>
+                </div>
+
+            </div>
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="py-4 px-10 bg-gray-100">
-            <p class="text-xl font-semibold mb-4">Contact me</p>
-            <div class="flex flex-col space-y-4">
-                <input id="email" class="bg-gray-200 p-2 rounded-md" type="email" placeholder="E-mail">
-                <input id="name" class="bg-gray-200 p-2 rounded-md" type="text" placeholder="Full Name">
-                <textarea id="message" class="bg-gray-200 p-2 rounded-md" placeholder="Message" rows="4"></textarea>
-            </div>
-            <button onclick="showPopup()" type="button" class="bg-black font-semibold text-white px-4 py-2 rounded-full hover:bg-white hover:border hover:border-black hover:border-2 hover:text-black mt-4">
-                Send
-            </button>
-        </section>
+        <section id="contact" class="py-10 px-15 bg-white">
+            <div class="flex flex-col lg:flex-row gap-10">
+                <!-- Contact Form -->
+                <div class="flex-1">
+                    <p class="text-xl font-semibold mb-4">Contact me</p>
+                    <div class="flex flex-col space-y-4">
+                        <input id="email" class="bg-gray-100 p-2 rounded-md" type="email" placeholder="E-mail">
+                        <input id="name" class="bg-gray-100 p-2 rounded-md" type="text" placeholder="Full Name">
+                        <textarea id="message" class="bg-gray-100 p-2 rounded-md" placeholder="Message" rows="4"></textarea>
+                    </div>
+                    <button onclick="submitForm()" type="button" class="bg-black font-semibold text-white px-4 py-2 rounded-full button-primary mt-4">
+                        Send
+                    </button>
+                </div>
 
-        <!-- POPUP -->
-        <div id="popup" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-85 hidden">
-            <div class="bg-white rounded-lg shadow-lg py-4 px-10 w-1/2">
-                <p class="flex justify-center text-2xl font-semibold mb-4">Confirm Your Message</p>
-                <p class="font-semibold">Name: <span class="font-medium" id="popupName"></span></p>
-                <p class="font-semibold">Email: <span class="font-medium" id="popupEmail"></span></p>
-                <p class="font-semibold">Message:</p>
-                <p class="mb-4 whitespace-pre-line"><span id="popupMessage"></span></p>
-                <div class="flex justify-center space-x-2 mt-4">
-                    <button onclick="closePopup()" class="bg-gray-400 text-white px-3 py-1 rounded-md hover:bg-gray-500">Close</button>
-                    <button onclick="submitForm()" class="bg-green-500 text-white px-3 py-1 rounded-md hover:bg-green-600">Confirm</button>
+                <!-- Messages Display -->
+                <div class="flex-1">
+                    <p class="text-xl font-semibold mb-4">Messages</p>
+                    <div id="messagesList" class="space-y-4 max-h-96 overflow-y-auto">
+                        <p class="text-gray-500 text-center py-8">No messages yet</p>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
+
+
 
     </Main>
 
