@@ -11,9 +11,13 @@
         body {
             font-family: 'Poppins', sans-serif;
         }
+        .grayscale-img {
+            filter: grayscale(100%);
+        }
+        .grayscale-img-hover:hover {
+            filter: grayscale(0%);
+        }
     </style>
-    
-    <link rel="stylesheet" href="cs/style.css">
     <script src="js/script.js"></script>
 </head>
 <body>
@@ -22,12 +26,12 @@
     <Header>
         <nav>
             <div class="flex items-center justify-between py-4 px-10">
-                <h1 class="text-2xl font-bold">AJILLA</h1>
+                <h1 class="font-semibold">mfarhadainc@gmail.com</h1>
                 <ul class="flex space-x-4">
-                    <li><a href="#home" class="hover:text-xl">Home</a></li>
-                    <li><a href="#about" class="hover:text-xl">About</a></li>
-                    <li><a href="#services" class="hover:text-xl">Services</a></li>
-                    <li><a href="#contact" class="hover:text-xl">Contact</a></li>
+                    <li><a href="#home" class="hover:underline">Home</a></li>
+                    <li><a href="#about" class="hover:underline">About</a></li>
+                    <li><a href="#portfolio" class="hover:underline">Portofolio</a></li>
+                    <li><a href="#contact" class="hover:underline">Contact</a></li>
                 </ul>
             </div>
         </nav>
@@ -35,29 +39,40 @@
 
     <!-- Main Content Section -->
     <Main>
+    
+        <!-- Home Section -->
         <section id="home" class="flex flex-col items-center justify-center py-4 px-10 h-screen bg-white">
-            <h2 class="font-medium">Welcome, </h2>
-            <p class="text-2xl font-bold">To AJILLA's</p>
-            <p class="text-5xl font-black">WEBSITE</p>
+            <h2 class="font-medium mb-4">Welcome, </h2>
+            <p class="text-2xl font-semibold">I'm Muhammad Farhad</p>
+            <p class="text-8xl font-black">AJILLA</p>
+            <a href="#portfolio" class="bg-black font-semibold text-white px-6 py-4 rounded-full hover:bg-white hover:border hover:border-black hover:border-2 hover:text-black mt-8">
+                See Portfolio
+            </a>
         </section>
-        <section id="about" class="py-4 px-10 bg-gray-100">
-            <h2 class="text-xl font-semibold">Tentang Saya</h2>
-            <p>Saya adalah seorang pengembang web yang berfokus pada pembuatan aplikasi web yang responsif dan interaktif.</p>
-            <div class="flex gap-3 items-center justify-center mt-4">
+
+        <!-- Skill Section -->
+        <section id="skill" class="py-10 px-20 bg-gray-100">
+            <div class="px-50 flex items-center justify-between">
                 <!-- Kotlin -->
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg" alt="Kotlin" class="w-10 h-10">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg" alt="Kotlin" class="grayscale-img grayscale-img-hover w-15 h-15">
 
                 <!-- React -->
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" class="w-10 h-10">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" class="grayscale-img grayscale-img-hover h-15">
 
                 <!-- Figma -->
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma" class="w-10 h-10">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma" class="grayscale-img grayscale-img-hover w-15 h-15">
 
                 <!-- Godot -->
-                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Godot_icon.svg" alt="Godot" class="w-10 h-10">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Godot_icon.svg" alt="Godot" class="grayscale-img grayscale-img-hover w-15 h-15">
             </div>
         </section>
-        <section id="services" class="py-4 px-10  bg-white">
+
+        <!-- About Section -->
+        <section id="about" class="py-4 px-10 bg-white">
+        </section>
+
+        <!-- Services Section -->
+        <section id="portfolio" class="py-4 px-10  bg-white">
             <h2 class="text-xl font-semibold">Layanan Saya</h2>
             <ul class="list-disc pl-5">
                 <li>Pengembangan Web</li>
@@ -65,15 +80,35 @@
                 <li>Optimasi SEO</li>
             </ul>
         </section>
+
+        <!-- Contact Section -->
         <section id="contact" class="py-4 px-10 bg-gray-100">
             <p class="text-xl font-semibold mb-4">Contact me</p>
             <div class="flex flex-col space-y-4">
-                <input class ="bg-gray-200 p-2 rounded-md" type="email" placeholder="E-mail">
-                <input class="bg-gray-200 p-2 rounded-md" type="text" placeholder="Full Name">
-                <textarea class="bg-gray-200 p-2 rounded-md" placeholder="Message" rows="4"></textarea>
+                <input id="email" class="bg-gray-200 p-2 rounded-md" type="email" placeholder="E-mail">
+                <input id="name" class="bg-gray-200 p-2 rounded-md" type="text" placeholder="Full Name">
+                <textarea id="message" class="bg-gray-200 p-2 rounded-md" placeholder="Message" rows="4"></textarea>
             </div>
-            <button type="submit" class="bg-blue-500 font-semibold text-white px-4 py-2 rounded-md hover:bg-blue-600 mt-4">Send</button>
+            <button onclick="showPopup()" type="button" class="bg-black font-semibold text-white px-4 py-2 rounded-full hover:bg-white hover:border hover:border-black hover:border-2 hover:text-black mt-4">
+                Send
+            </button>
         </section>
+
+        <!-- POPUP -->
+        <div id="popup" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-85 hidden">
+            <div class="bg-white rounded-lg shadow-lg py-4 px-10 w-1/2">
+                <p class="flex justify-center text-2xl font-semibold mb-4">Confirm Your Message</p>
+                <p class="font-semibold">Name: <span class="font-medium" id="popupName"></span></p>
+                <p class="font-semibold">Email: <span class="font-medium" id="popupEmail"></span></p>
+                <p class="font-semibold">Message:</p>
+                <p class="mb-4 whitespace-pre-line"><span id="popupMessage"></span></p>
+                <div class="flex justify-center space-x-2 mt-4">
+                    <button onclick="closePopup()" class="bg-gray-400 text-white px-3 py-1 rounded-md hover:bg-gray-500">Close</button>
+                    <button onclick="submitForm()" class="bg-green-500 text-white px-3 py-1 rounded-md hover:bg-green-600">Confirm</button>
+                </div>
+            </div>
+        </div>
+
     </Main>
 
     <!-- Footer Section -->
